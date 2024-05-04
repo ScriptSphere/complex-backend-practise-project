@@ -19,7 +19,7 @@ const userSchema = new Schema(
             lowercase: true,
             trim: true,
         },
-        fullname: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
@@ -66,7 +66,7 @@ userSchema.methods.generateAccessToken = function () {
             _id: this._id,
             email: this.email,
             username: this.username,
-            fullname: this.fullname,
+            fullName: this.fullname,
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
@@ -74,7 +74,7 @@ userSchema.methods.generateAccessToken = function () {
         }
     );
 };
-userSchema.methods.generateRefresh = function () {
+userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
             _id: this._id,
